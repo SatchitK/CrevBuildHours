@@ -1,6 +1,44 @@
 {% extends "base.html" %} 
-{% block title %}Home{% endblock %}
+{% block title %}Home{% endblock %} {% block content %}
 
-{% block content %} 
-<h1>This is the Home Page</h1>
+
+<section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Add To Your Hours Below</h2>
+              <ul class="list-group list-group-flush" id="hours">
+                {% for hour in user.hours %}
+                <li class="list-group-item">
+                  {{ hour.data }}
+                  <button type="button" class="close" onClick="deleteHour({{ hour.id }})">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </li>
+                {% endfor %}
+              </ul>
+              <form method="POST">
+                <textarea name="note" id="note" class="form-control"></textarea>
+                <br />
+                <div align="center">
+                    <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><b>Add Hours</b></button>
+                </div>
+            </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 {% endblock %}
