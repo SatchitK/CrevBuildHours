@@ -14,7 +14,7 @@
                 {% for hour in user.hours %}
                 <li class="list-group-item">
                   {{ hour.data }}
-                  <button type="button" class="close" onClick="deleteHour({{ hour.id }})">
+                  <button type="button" class="close" onClick="deleteHour('{{hour.id}}')">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </li>
