@@ -27,4 +27,5 @@ def delete_hour():
         if hour.user_id == current_user.id:
             db.session.delete(hour)
             db.session.commit()
+
     return jsonify({})
