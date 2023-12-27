@@ -10,7 +10,7 @@ views = Blueprint('views', __name__)
 @login_required
 def home():
     if request.method == 'POST': 
-        hour = request.form.get('hours')
+        hour = request.form.get('hour')
         new_hour = Hours(data=hour, user_id=current_user.id) 
         db.session.add(new_hour) 
         db.session.commit()
