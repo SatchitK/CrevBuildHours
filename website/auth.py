@@ -35,7 +35,7 @@ def logout():
 def sign_up():
     if request.method == 'POST': 
         email = request.form.get('email')
-        fullName = request.form.get('fullname')
+        fullName = request.form.get('fullName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
@@ -54,7 +54,7 @@ def sign_up():
             new_user = User(email=email, fullName=fullName, password=generate_password_hash(password1, method='pbkdf2:sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
 
