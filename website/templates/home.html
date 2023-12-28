@@ -14,7 +14,7 @@
               <ul class="list-group list-group-flush" id="hours">
                 {% for hour in user.hours %}
                 <li class="list-group-item">
-                  {{hour.date}} : {{ hour.data }}
+                  {{hour.date}} : {{ hour.data }} hours
                   <button type="button" class="close" onClick="deleteHour('{{hour.id}}')">
                     <span aria-hidden="true">&times;</span>
                   </button>

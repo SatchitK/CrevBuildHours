@@ -6,6 +6,7 @@ from .models import User, Hours
 from . import db
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import json
 import os
@@ -46,7 +47,11 @@ def insights():
     for user in users:
         data.append(User.query.filter_by(email=user.email).first().total)
         labels.append(User.query.filter_by(email=user.email).first().fullName)
-    
+
+    df = pd.DataFrame({"Full Name": labels, "Hours" : data})
+    df.to_csv("./member_hours.csv", index=False)
+    csv_file = "./member_hours.csv"
+
     return render_template("insights.html", user=current_user, data=data, labels=labels)
 
 
