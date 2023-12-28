@@ -15,8 +15,25 @@
             },
             options: {
                 indexAxis: 'y',
-                responsive: true
-            }
+                responsive: true,
+                plugins: {
+                    legend: {
+                      position: 'right',
+                        labels: {
+                            font: {
+                                size: 20
+                            }
+                        }
+                    },
+                    title: {
+                      display: true,
+                      text: 'Crevolution Build Hours by Member',
+                      font: {
+                        size: 20
+                      }
+                    }
+                },
+            },
         });
     </script>
 {% endblock %}
