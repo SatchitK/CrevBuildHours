@@ -13,4 +13,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(250), unique=True)
     password = db.Column(db.String(250))
     fullName = db.Column(db.String(250))
+    total = db.Column(db.Integer)
     hours = db.relationship('Hours')
+    

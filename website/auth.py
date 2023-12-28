@@ -11,7 +11,6 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
@@ -51,7 +50,7 @@ def sign_up():
         elif len(password1) < 5:
             flash('Password length must be greater than 5 characters', category='error')
         else:
-            new_user = User(email=email, fullName=fullName, password=generate_password_hash(password1, method='pbkdf2:sha256'))
+            new_user = User(email=email, fullName=fullName, password=generate_password_hash(password1, method='pbkdf2:sha256'), total=0)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)

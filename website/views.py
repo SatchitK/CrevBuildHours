@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Hours
+from .models import User, Hours
 from . import db
+import seaborn as sns
+import matplotlib.pyplot as plt
 import json
+
 
 views = Blueprint('views', __name__)
 
@@ -11,12 +14,42 @@ views = Blueprint('views', __name__)
 def home():
     if request.method == 'POST': 
         hour = request.form.get('hour')
-        new_hour = Hours(data=hour, user_id=current_user.id) 
-        db.session.add(new_hour) 
-        db.session.commit()
-        flash('Hours added!', category='success')
+        if hour.isdigit():
+                new_hour = Hours(data=hour, user_id=current_user.id) 
+                db.session.add(new_hour) 
+                db.session.commit()
+                flash('Hours added!', category='success')  
+        else:
+            flash('Invalid Hours!', category='error')
 
     return render_template("home.html", user=current_user)
+
+@views.route('/insights')
+def insights():
+    users = User.query.all()
+    for user in users:
+        total = 0
+        for hour in user.hours:
+            total += hour.data
+            User.query.filter_by(email=user.email).first().total = total
+    
+    data = []
+    labels = []
+    for user in users:
+        data.append(User.query.filter_by(email=user.email).first().total)
+        labels.append(User.query.filter_by(email=user.email).first().fullName)
+    
+    plt.figure(figsize=(15,8))
+    sns.barplot(x=data, y=labels)
+
+    filename = "latest.png"
+
+    plt.savefig(r'./website/plots/' + filename)
+
+   
+
+    return render_template("insights.html", user=current_user)
+
 
 @views.route('/delete-hour', methods=['POST'])
 def delete_hour():
@@ -29,3 +62,11 @@ def delete_hour():
             db.session.commit()
 
     return jsonify({})
+
+
+
+
+
+
+
+
