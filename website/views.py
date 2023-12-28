@@ -8,6 +8,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import json
+import os
+import csv
 
 
 views = Blueprint('views', __name__)
@@ -18,10 +20,13 @@ def home():
     if request.method == 'POST': 
         hour = request.form.get('hour')
         if hour.isdigit():
-                new_hour = Hours(data=hour, user_id=current_user.id) 
-                db.session.add(new_hour) 
-                db.session.commit()
-                flash('Hours added!', category='success')  
+                if int(hour) <= 12:
+                    new_hour = Hours(data=hour, user_id=current_user.id) 
+                    db.session.add(new_hour) 
+                    db.session.commit()
+                    flash('Hours added!', category='success')
+                else:
+                    flash('Too many hours in one entry!', category='error')  
         else:
             flash('Invalid Hours!', category='error')
 
@@ -42,12 +47,6 @@ def insights():
         data.append(User.query.filter_by(email=user.email).first().total)
         labels.append(User.query.filter_by(email=user.email).first().fullName)
     
-    # plt.figure(figsize=(15,8))
-    # sns.barplot(x=data, y=labels)
-
-    # filename = "latest.png"
-
-    # plt.savefig(r'./website/plots/' + filename, format='png')
     return render_template("insights.html", user=current_user, data=data, labels=labels)
 
 
