@@ -1,9 +1,12 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, send_file
+import io
+import base64
 from flask_login import login_required, current_user
 from .models import User, Hours
 from . import db
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import json
 
 
@@ -39,16 +42,13 @@ def insights():
         data.append(User.query.filter_by(email=user.email).first().total)
         labels.append(User.query.filter_by(email=user.email).first().fullName)
     
-    plt.figure(figsize=(15,8))
-    sns.barplot(x=data, y=labels)
+    # plt.figure(figsize=(15,8))
+    # sns.barplot(x=data, y=labels)
 
-    filename = "latest.png"
+    # filename = "latest.png"
 
-    plt.savefig(r'./website/plots/' + filename)
-
-   
-
-    return render_template("insights.html", user=current_user)
+    # plt.savefig(r'./website/plots/' + filename, format='png')
+    return render_template("insights.html", user=current_user, data=data, labels=labels)
 
 
 @views.route('/delete-hour', methods=['POST'])
