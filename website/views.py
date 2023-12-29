@@ -7,6 +7,7 @@ from . import db
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+from sqlalchemy import func
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import json
 import os
@@ -69,8 +70,7 @@ def insights():
     # print(dates_df)
     # sns.histplot(data=dates_df["raw_dates"])
     # plt.savefig("date_logs.png")
-
-
+ 
     #export data to simple 2 column csv
     df = pd.DataFrame({"Full Name": labels, "Hours" : data})
     df.to_csv("./member_hours.csv", index=False)
