@@ -1,7 +1,9 @@
 {% extends "base.html" %} 
 {% block title %}Insights{% endblock %} {% block content %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <br></br>
+    <h1 align="center">Stats for Robotics Nerds Below 🤓</h1>
+    <br></br>
     <canvas id="barChart"></canvas>
 
     <script>    
@@ -43,4 +45,95 @@
         });
     </script>
     <br></br>
+    <br></br>
+    <br></br>
+    <canvas id="barChart2"></canvas>
+
+    <script>    
+        var ctx = document.getElementById("barChart2").getContext("2d")
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: {{labels | safe}},
+            datasets: [{
+                label: 'Avg Hours Per Week',
+                data: {{avg_pw | safe}},
+                borderColor: '#AFE1AF',
+                backgroundColor: '#AFE1AF',
+            }],
+            },
+            options: {
+                
+                indexAxis: 'y',
+                responsive: true,
+                scale: {
+                    font: { size: 20}
+                },
+                plugins: {
+                    legend: {
+                      position: 'right',
+                        labels: {
+                            font: {
+                                size: 20
+                            }
+                        }
+                    },
+                    title: {
+                      display: true,
+                      text: 'Crevolution Build Hours by Member per Week',
+                      font: {
+                        size: 20
+                      }
+                    }
+                },
+            },
+        });
+    </script>
+
+
+    <br></br>
+    <br></br>
+    <br></br>
+    <canvas id="barChart3"></canvas>
+
+    <script>    
+        var ctx = document.getElementById("barChart3").getContext("2d")
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: {{labels | safe}},
+            datasets: [{
+                label: 'Logs Per Member',
+                data: {{entries_per_user | safe}},
+                borderColor: '#F88379',
+                backgroundColor: '#F88379',
+            }],
+            },
+            options: {
+                
+                indexAxis: 'x',
+                responsive: true,
+                scale: {
+                    font: { size: 20}
+                },
+                plugins: {
+                    legend: {
+                      position: 'right',
+                        labels: {
+                            font: {
+                                size: 20
+                            }
+                        }
+                    },
+                    title: {
+                      display: true,
+                      text: 'Total Hour Logs by Crevolution Members',
+                      font: {
+                        size: 20
+                      }
+                    }
+                },
+            },
+        });
+    </script>
 {% endblock %}

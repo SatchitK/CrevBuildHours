@@ -35,24 +35,52 @@ def home():
 
 @views.route('/insights')
 def insights():
+    #update total hours per person
+    total_entries_per_user = []
     users = User.query.all()
     for user in users:
         total = 0
+        total_entries_per_user.append(len(user.hours))
         for hour in user.hours:
             total += hour.data
             User.query.filter_by(email=user.email).first().total = total
     
+    #get arrays populated for export
     data = []
+    avg_per_week_data = []
     labels = []
+    date_time = []
     for user in users:
         data.append(User.query.filter_by(email=user.email).first().total)
         labels.append(User.query.filter_by(email=user.email).first().fullName)
+        avg_per_week_data.append(User.query.filter_by(email=user.email).first().total / 15)
+    
+    for hour in user.hours:
+        date_time.append(hour.date)
 
+    #hours logged each datewise (locally stored)
+    # dates_only = []
+    # for date in date_time:
+    #     date_str = str(date)
+    #     dates_only.append(date_str.split(" ")[0])
+    # print(dates_only)
+
+    # dates_df = pd.DataFrame({"raw_dates":dates_only})
+    # print(dates_df)
+    # sns.histplot(data=dates_df["raw_dates"])
+    # plt.savefig("date_logs.png")
+
+
+    #export data to simple 2 column csv
     df = pd.DataFrame({"Full Name": labels, "Hours" : data})
     df.to_csv("./member_hours.csv", index=False)
     csv_file = "./member_hours.csv"
 
-    return render_template("insights.html", user=current_user, data=data, labels=labels)
+    
+
+    return render_template("insights.html", user=current_user, data=data, 
+                           labels=labels, avg_pw = avg_per_week_data
+                           ,entries_per_user = total_entries_per_user)
 
 
 @views.route('/delete-hour', methods=['POST'])
