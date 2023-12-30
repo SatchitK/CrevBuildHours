@@ -9,18 +9,20 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <p><b>Welcome {{user.fullName}}</b></p>
+              <p><b>Welcome {{user.fullName}}!</b></p>
               <p>Please add your hours below:</p>
-              <ul class="list-group list-group-flush" id="hours">
-                {% for hour in user.hours %}
-                <li class="list-group-item">
-                  <b>{{hour.date.strftime('%A, %m/%d/%Y, %I:%M %p')}}:</b> {{ hour.data|int if hour.data % 1 == 0 else hour.data }} hours
-                  <button type="button" class="close" onClick="deleteHour('{{hour.id}}')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </li>   
-                {% endfor %}
-              </ul>
+              <div style="max-height:300px; overflow-y:auto;">
+                <ul class="list-group list-group-flush" id="hours">
+                  {% for hour in user.hours %}
+                  <li class="list-group-item">
+                    <b>{{hour.date.strftime('%A, %m/%d/%Y, %I:%M %p')}}:</b> {{ hour.data|int if hour.data % 1 == 0 else hour.data }} hours
+                    <button type="button" class="close" onClick="deleteHour('{{hour.id}}')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </li>   
+                  {% endfor %}
+                </ul>
+              </div>
               <form method="POST">
                 <textarea name="hour" id="hour" class="form-control"></textarea>
                 <br />
