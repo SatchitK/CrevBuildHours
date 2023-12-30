@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, send_file
 import io
 import base64
+from datetime import datetime
 from flask_login import login_required, current_user
 from .models import User, Hours
 from . import db
@@ -21,16 +22,27 @@ views = Blueprint('views', __name__)
 def home():
     if request.method == 'POST': 
         hour = request.form.get('hour')
-        if hour.isdigit():
-                if int(hour) <= 12:
-                    new_hour = Hours(data=hour, user_id=current_user.id) 
-                    db.session.add(new_hour) 
-                    db.session.commit()
-                    flash('Hours added!', category='success')
-                else:
-                    flash('Too many hours in one entry!', category='error')  
-        else:
-            flash('Invalid Hours!', category='error')
+        try:
+            if float(hour) and (float(hour) > 0.0):
+                    hour_num = float(hour)
+                    if hour_num <= 16:
+                        todays_date = datetime.today().date()
+                        todays_entries = Hours.query.filter(
+                                         Hours.user_id == current_user.id,
+                                         func.date(Hours.date)==todays_date).first();
+                        if not todays_entries:
+                            new_hour = Hours(data=hour, user_id=current_user.id) 
+                            db.session.add(new_hour) 
+                            db.session.commit()
+                            flash('Hours added!', category='success')
+                        else:
+                            flash('You already entered hours today! Only 1 entry per day.', category='error')
+                    else:
+                        flash('Max hours per day are 16!', category='error')  
+            else:
+                flash('Hours entered must exceed 0.', category='error')
+        except ValueError:
+            flash('Your entry was not a number, make sure it is a decimal or integer number.', category='error')
 
     return render_template("home.html", user=current_user)
 
