@@ -1,12 +1,13 @@
 from . import db
 from flask_login import UserMixin
-from datetime import date
+from datetime import datetime
+import pytz
 from sqlalchemy.sql import func
 
 class Hours(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.Float)
-    date = db.Column(db.DateTime(), default=func.now(), server_default=func.timezone('EST'), unique=True)
+    date = db.Column(db.DateTime(timezone=True), default=lambda:datetime.now(pytz.timezone('America/New_York')), unique=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class User(db.Model, UserMixin):
