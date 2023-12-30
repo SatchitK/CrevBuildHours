@@ -65,7 +65,7 @@ def insights():
     date_time = []
     for user in users:
         data.append(User.query.filter_by(email=user.email).first().total)
-        labels.append(User.query.filter_by(email=user.email).first().fullName)
+        labels.append(User.query.filter_by(email=user.email).first().fullName.split(' ')[0])
         avg_per_week_data.append(User.query.filter_by(email=user.email).first().total / 15)
     
     # for hour in user.hours:
