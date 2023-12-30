@@ -68,8 +68,8 @@ def insights():
         labels.append(User.query.filter_by(email=user.email).first().fullName)
         avg_per_week_data.append(User.query.filter_by(email=user.email).first().total / 15)
     
-    for hour in user.hours:
-        date_time.append(hour.date)
+    # for hour in user.hours:
+    #     date_time.append(hour.date)
 
     #hours logged each datewise (locally stored)
     # dates_only = []
