@@ -1,20 +1,59 @@
 .gradient-custom-3 {
     /* fallback for old browsers */
-    background: #86fde8;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #acb6e5, #86fde8);
+    background: #916a20;  
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #acb6e5, #86fde8)
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FDB931 0%, #9f7928 8%, #8A6E2F 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FDB931 0%, #9f7928 8%, #9f7928 25%, #5d4a1f 62.5%, #4b3c19 100%);
     }
+    
+    /* Button */
     .gradient-custom-4 {
     /* fallback for old browsers */
-    background: #86fde8;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #acb6e5, #86fde8);
-    
+    background: #b28228;
+    color: #dddddd;
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #acb6e5, #86fde8)
+    background: linear-gradient(to left, #7a581a, #916a20)
+    }
+    body{
+        background: #353535;  
+    
+    }
+    body::-webkit-scrollbar {
+        /*Chrome, Safari, and Opera*/
+        display: none;
+      }
+      body {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+    .logincss{
+        color: #dddddd;
+        background: #353535;
+        border-radius: 10px;
+    }
+    footer{
+        background: #353535; 
+        color: #dddddd;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 28px;
+    }
+    .navbar{
+        background: #353535;
+
+    }
+    .card{
+        border-width: 0px;
+        border-radius: 10px;
+    }
+    .nav-item{
+        color:#dddddd !important;
+        padding: 8px 12px 8px 12px !important;
+    }
+    .navbar-toggler{
+        margin: 6px 12px 6px 12px !important;
     }

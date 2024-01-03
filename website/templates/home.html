@@ -1,9 +1,8 @@
-{% extends "base.html" %} 
+gradient-custom-3{% extends "base.html" %}
 {% block title %}Home{% endblock %} {% block content %}
 
-
 <section class="vh-100 bg-image">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -15,11 +14,13 @@
                 <ul class="list-group list-group-flush" id="hours">
                   {% for hour in user.hours %}
                   <li class="list-group-item">
-                    <b>{{hour.date.strftime('%A, %m/%d/%Y, %I:%M %p')}}:</b> {{ hour.data|int if hour.data % 1 == 0 else hour.data }} hours
-                    <button type="button" class="close" onClick="deleteHour('{{hour.id}}')">
+                    <b>{{hour.date.strftime('%A, %m/%d/%Y, %I:%M %p')}}:</b> {{
+                    hour.data|int if hour.data % 1 == 0 else hour.data }} hours
+                    <button type="button" class="close"
+                      onClick="deleteHour('{{hour.id}}')">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                  </li>   
+                  </li>
                   {% endfor %}
                 </ul>
               </div>
@@ -27,8 +28,9 @@
                 <textarea name="hour" id="hour" class="form-control"></textarea>
                 <br />
                 <div align="center">
-                    <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><b>Add Hours</b></button>
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><b>Add
+                      Hours</b></button>
                 </div>
               </form>
 
@@ -39,9 +41,5 @@
     </div>
   </div>
 </section>
-
-
-
-
 
 {% endblock %}
