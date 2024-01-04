@@ -11,6 +11,7 @@ import pandas as pd
 from sqlalchemy import func
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import json
+import pytz
 import os
 import csv
 
@@ -26,7 +27,7 @@ def home():
             if float(hour) and (float(hour) > 0.0):
                     hour_num = float(hour)
                     if hour_num <= 16:
-                        todays_date = datetime.today().date()
+                        todays_date = datetime.now(pytz.timezone('US/Eastern')).date()
                         todays_entries = Hours.query.filter(
                                          Hours.user_id == current_user.id,
                                          func.date(Hours.date)==todays_date).first();
