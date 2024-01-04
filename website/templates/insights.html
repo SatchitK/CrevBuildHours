@@ -3,7 +3,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="insightcss gradient-custom-3">
     <br></br>
-    <h1 class="text-center">Stats for Robotics Nerds Below 🤓</h1>
+    <br></br>
+    <h1 class="text-center nerds z-1">Stats for Robotics Nerds Below 🤓</h1>
     <br></br>
     <canvas id="barChart"></canvas>
 
@@ -53,13 +54,13 @@
         var ctx = document.getElementById("barChart2").getContext("2d")
         var chart = new Chart(ctx, {
             type: 'bar',
+            
             data: {
             labels: {{labels | safe}},
             datasets: [{
                 label: 'Avg Hours Per Week',
                 data: {{avg_pw | safe}},
-                borderColor: '#AFE1AF',
-                backgroundColor: '#AFE1AF',
+                
             }],
             },
             options: {
