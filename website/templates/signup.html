@@ -1,40 +1,49 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
-    content %}
-    <section class="vh-100 bg-image">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
+content %}
+<section class="vh-100 bg-image z-0">
+  <div class="mask d-flex align-items-center h-100 z-0">
+    <div class="container h-100 z-0">
+      <div
+        class="row d-flex justify-content-center align-items-center h-100 z-0">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6 z-0">
+          <br>
+          <br>
+          <br>
+
+          <div class="card z-0">
+            <div class="card-body p-5 logincss z-0">
               <h2 class="text-uppercase text-center mb-5">Sign Up</h2>
 
               <form method="POST">
 
                 <div class="form-outline mb-4">
-                    <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" />
-                    <label class="form-label" for="fullName">Your Name</label>
+                  <input type="text" id="fullName" name="fullName"
+                    class="form-control form-control-lg" />
+                  <label class="form-label" for="fullName">Your Name</label>
                 </div>
-  
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                  <input type="email" id="email" name="email"
+                    class="form-control form-control-lg" />
                   <label class="form-label" for="email">Your Email</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="password1" name="password1" class="form-control form-control-lg" />
+                  <input type="password" id="password1" name="password1"
+                    class="form-control form-control-lg" />
                   <label class="form-label" for="password1">Password</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="password2" name="password2" class="form-control form-control-lg" />
-                  <label class="form-label" for="password2">Confirm your password</label>
+                  <input type="password" id="password2" name="password2"
+                    class="form-control form-control-lg" />
+                  <label class="form-label" for="password2">Confirm your
+                    password</label>
                 </div>
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><b>Submit</b></button>
+                    class="btn btn-block btn-lg gradient-custom-4 "><b>Submit</b></button>
                 </div>
 
                 <!-- <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
@@ -44,9 +53,10 @@
 
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 </section>
-    {% endblock %}
+{% endblock %}
