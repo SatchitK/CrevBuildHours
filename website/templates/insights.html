@@ -26,12 +26,27 @@
                 scale: {
                     font: { size: 17}
                 },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#dddddd' 
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#dddddd' 
+                        }
+                    }
+                },
                 plugins: {
                     legend: {
                         labels: {
+                            
                             font: {
                                 size: 20
-                            }
+                                
+                            },
+                            color: '#dddddd'
                         }
                     },
                     title: {
@@ -39,7 +54,8 @@
                       text: 'Crevolution Build Hours by Member',
                       font: {
                         size: 20
-                      }
+                      },
+                      color: '#dddddd'
                     }
                 },
             },
@@ -60,7 +76,8 @@
             datasets: [{
                 label: 'Avg Hours Per Week',
                 data: {{avg_pw | safe}},
-                
+                borderColor: '#77dd77',
+                backgroundColor: '#77dd77',
             }],
             },
             options: {
@@ -70,12 +87,25 @@
                 scale: {
                     font: { size: 17}
                 },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#dddddd'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#dddddd'
+                        }
+                    }
+                },
                 plugins: {
                     legend: {
                         labels: {
                             font: {
                                 size: 20
-                            }
+                            },
+                            color: '#dddddd'
                         }
                     },
                     title: {
@@ -83,7 +113,8 @@
                       text: 'Crevolution Build Hours by Member per Week',
                       font: {
                         size: 20
-                      }
+                      },
+                      color: '#dddddd'
                     }
                 },
             },
@@ -116,12 +147,25 @@
                 scale: {
                     font: { size: 17}
                 },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#dddddd' 
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#dddddd' 
+                        }
+                    }
+                },
                 plugins: {
                     legend: {
                         labels: {
                             font: {
                                 size: 20
-                            }
+                            },
+                            color: '#dddddd'
                         }
                     },
                     title: {
@@ -129,7 +173,8 @@
                       text: 'Total Hour Logs by Crevolution Members',
                       font: {
                         size: 20
-                      }
+                      },
+                      color: '#dddddd'
                     }
                 },
             },
