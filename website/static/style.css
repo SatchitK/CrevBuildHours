@@ -36,15 +36,19 @@
     footer{
         background: #353535; 
         color: #dddddd;
-        position: fixed;
+        position: relative;
         left: 0;
         bottom: 0;
         width: 100%;
         height: 28px;
     }
     .navbar{
+        opacity: 0.95;
         background: #353535;
-
+        position: fixed;
+        left: 0;
+        top: 0;
+width: 100%;
     }
     .card{
         border-width: 0px;
@@ -56,4 +60,12 @@
     }
     .navbar-toggler{
         margin: 6px 12px 6px 12px !important;
+    }
+    .insightcss{
+        color:#dddddd !important;
+    }
+    .alert{
+        top: 55px;
+        position: fixed;
+width: 100%;
     }
