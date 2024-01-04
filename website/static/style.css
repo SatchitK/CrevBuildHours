@@ -82,9 +82,10 @@ width: 100%;
         padding: 10px 20px 10px 20px;
         width: 50%; 
     }
-    li{
-        background: #353535;
+    .list-group-item{
+        background: #eeeeee;
+        border-width: 1px;
         border-radius: 10px;
-        margin: 10px 25% 10px 25%;
+        margin: 10px 0 10px 0;
         padding: 10px 20px 10px 20px;
     }

@@ -1,13 +1,14 @@
 gradient-custom-3{% extends "base.html" %}
 {% block title %}Home{% endblock %} {% block content %}
 
-<section class="vh-100 bg-image">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5 logincss">
+<section class="vh-100 bg-image z-0">
+  <div class="mask d-flex align-items-center h-100 z-0">
+    <div class="container h-100 z-0">
+      <div
+        class="row d-flex justify-content-center align-items-center h-100 z-0">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6 z-0">
+          <div class="card z-0" style="border-radius: 15px;">
+            <div class="card-body p-5 logincss z-0">
               <h3><b>Welcome {{user.fullName}}!</b></h3>
               <p>Please add your hours for one day below:</p>
               <div style="max-height:300px; overflow-y:auto;">
