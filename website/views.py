@@ -95,6 +95,21 @@ def insights():
                            labels=labels, avg_pw = avg_per_week_data
                            ,entries_per_user = total_entries_per_user)
 
+@views.route('/update', methods=['GET', 'POST'])
+@login_required
+def update():
+    if request.method == 'POST':
+        newName = request.form.get('newName')
+        newEmail = request.form.get('newEmail')
+        if len(newEmail) < 4:
+            flash('Email must be greater than 4 characters', category='error')
+        elif len(newName) < 3:
+            flash('Name must greater than 3 characters', category='error')
+        else: 
+            current_user.fullName = newName
+            current_user.email = newEmail
+    return render_template("update.html", user=current_user)
+
 
 @views.route('/delete-hour', methods=['POST'])
 def delete_hour():
