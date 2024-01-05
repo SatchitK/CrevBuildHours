@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify, send_file
+from flask import Blueprint, render_template, request, flash, jsonify, send_file, redirect, url_for
 import io
 import base64
 from datetime import datetime
@@ -108,6 +108,10 @@ def update():
         else: 
             current_user.fullName = newName
             current_user.email = newEmail
+            db.session.commit()
+            flash('Personal Information Successfully Updated!', category='success')
+            return redirect(url_for('views.home'))
+
     return render_template("update.html", user=current_user)
 
 
