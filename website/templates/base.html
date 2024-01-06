@@ -41,10 +41,11 @@
         <div class="navbar-nav">
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/"><b>Home</b></a>
-          <a class="nav-item nav-link" id="update" href="/update"><b>Update Profile</b></a>
+          <a class="nav-item nav-link" id="update" href="/update"><b>Update
+              Profile</b></a>
           <a class="nav-item nav-link" id="logout"
             href="/logout"><b>Logout</b></a>
-            
+
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login"><b>Login</b></a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up"><b>Sign
@@ -60,14 +61,16 @@
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
     <div class="z-3">
-      <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      <div class="alert alert-danger alter-dismissable fade show z-3"
+        role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       {% else %}
-      <div class="alert alert-success alter-dismissable fade show" role="alert">
+      <div class="alert alert-success alter-dismissable fade show z-3"
+        role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
           <span aria-hidden="true">&times;</span>
@@ -110,8 +113,18 @@
   </body>
 
   <footer class="z-2">
-    <p class="text-center "><b>© Satchit Kulkarni, Joey Tidrow -
+    <p class="text-center d-none d-md-block footpart"><b>© Satchit Kulkarni,
+        Joey Tidrow
+        -
         Crevolution
         Robotics 2023-24.</b></p>
+    <div class="text-center d-md-none footpart">
+      <p class="footpart" style="
+      margin-bottom: 0px;"><b>© Satchit Kulkarni, Joey
+          Tidrow -</b></p>
+      <p class="footpart"><b>
+          Crevolution
+          Robotics 2023-24.</b></p>
+    </div>
   </footer>
 </html>
