@@ -93,3 +93,11 @@ width: 100%;
         margin: 10px 0 10px 0;
         padding: 10px 20px 10px 20px;
     }
+    .list-group-item:last-child {
+        border-radius: 5px;
+        background-color: #eeeeee;
+    }
+    .form-control{
+        border-radius: 5px;
+        background-color: #eeeeee;
+    }
