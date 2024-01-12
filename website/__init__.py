@@ -31,4 +31,10 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
     
+    @app.after_request
+    def add_header(response):
+        response.cache_control.private = True
+        response.cache_control.public = False
+        return response
+    
     return app
