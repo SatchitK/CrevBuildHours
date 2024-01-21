@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 {% block title %}Insights{% endblock %} {% block content %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
 <div class="insightcss gradient-custom-3">
     <br></br>
     <br></br>
@@ -56,6 +57,20 @@
                         size: 20
                       },
                       color: '#dddddd'
+                    },
+                    annotation: {
+                        annotations: [{
+                            type: 'line',
+                            mode: 'horizontal',
+                            scaleID: 'y',
+                            value: 24, 
+                            borderColor: 'red', // Color of the line
+                            borderWidth: 5, // Width of the line
+                            label: {
+                                content: 'Week 2 Expected Hours', // Label for the line (optional)
+                                enabled: true // Set to false to hide the label
+                            }
+                        }]
                     }
                 },
             },
